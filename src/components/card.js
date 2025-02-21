@@ -26,7 +26,7 @@ export const IndividualCard = async (offset, limit) => {
         containerHpNum.appendChild(hpContainer);
 
         const image = document.createElement('img');
-        image.src = item.sprites.back_default;
+        image.src = item.sprites.front_shiny;
         image.setAttribute('class', 'pokeImg');
 
         const name = document.createElement('h4');

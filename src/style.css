@@ -66,7 +66,7 @@ button{
   padding-top:20px;
 }
 
-.hola, .favorito{
+.hola, .favorito, .api, .inicio{
     font-size: 22px;
     font-weight: 500;
 }
@@ -90,8 +90,8 @@ button{
 .showNav {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right:0;
+  width: 70%;
   height: 100%;
   background-color: #313131;;
   color: white;
@@ -219,7 +219,7 @@ align-items: center;
     cursor: pointer;
 }
 
-.home, .inicio{
+.home, .inicio, .api{
     cursor: pointer;
 }
 
@@ -236,11 +236,12 @@ align-items: center;
   }
   .desktopContainer {
     display: flex;
+    align-items: center;
     gap: 40px;
   }
   .imgFavorites {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
   }
   ul {

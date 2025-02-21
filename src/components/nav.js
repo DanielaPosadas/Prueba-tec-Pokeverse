@@ -32,8 +32,12 @@ export const nav = () => {
     pokeImage.setAttribute('alt', 'pokebola')
     pokeImage.setAttribute('id', 'pokeimage');
 
+    const api = document.createElement('p')
+    api.textContent = "POKE API";
+    api.setAttribute('class', 'api');
+
     const inicio = document.createElement('p')
-    inicio.textContent = "Home";
+    inicio.textContent = "HOME";
     inicio.setAttribute('class', 'inicio');
 
     const home = document.createElement('p')
@@ -43,6 +47,10 @@ export const nav = () => {
     const favorites = document.createElement('p');
     favorites.textContent = "FAVORITOS";
     favorites.setAttribute('class', 'favorito')
+
+    const pokeapi = document.createElement('p')
+    pokeapi.textContent = "POKE API";
+    pokeapi.setAttribute('class', 'api');
 
     const imageContainer = document.createElement('div');
     imageContainer.setAttribute('class', 'imageContainer')
@@ -54,6 +62,7 @@ export const nav = () => {
     mainContainer.appendChild(pokeImage);
     mainContainer.appendChild(favorites);
     mainContainer.appendChild(home);
+    mainContainer.appendChild(pokeapi);
     showNav.appendChild(mainContainer)
 
     
@@ -87,6 +96,7 @@ export const nav = () => {
     imgFavorites.setAttribute('class', 'imgFavorites')
     desktopContainer.setAttribute('class','desktopContainer')
     desktopContainer.appendChild(inicio);
+    desktopContainer.appendChild(api);
     desktopContainer.appendChild(imgFavorites);
     div_nav.appendChild(desktopContainer);
 
@@ -104,6 +114,12 @@ export const nav = () => {
     home.addEventListener('click' ,function(){
         navigateTo('/')
         })
+    api.addEventListener('click' ,function(){
+        window.open('https://pokeapi.co/', '_blank');
+    })
+    pokeapi.addEventListener('click' ,function(){
+        window.open('https://pokeapi.co/', '_blank');
+    })
 
     return div_nav 
 }
