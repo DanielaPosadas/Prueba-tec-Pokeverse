@@ -36,6 +36,21 @@ export const IndividualCard = async (offset, limit) => {
         const types = document.createElement('p');
         types.setAttribute('class', 'types')
         types.textContent = item.types.map(resp => resp.type.name).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('/');
+        if(types.textContent === "Fire"){
+            types.style.backgroundColor = '#ff0000';
+        } else if(types.textContent === "Grass/Poison" || types.textContent === "Poison" ){
+            types.style.backgroundColor = '#008000';
+        }else if(types.textContent === "Water"){
+            types.style.backgroundColor = '#149ded';
+        } else if(types.textContent === "Bug" || types.textContent === "Bug/Poison"){
+            types.style.backgroundColor = '#09b816';
+        }else if(types.textContent === "Ground"){
+            types.style.backgroundColor = '#a97a19e0';
+        }else if(types.textContent === "Electric"){
+            types.style.backgroundColor = '#ffdd50';
+        }else if(types.textContent === "Fairy" || types.textContent === "Normal/Fairy"){
+            types.style.backgroundColor = '#ff50e2e6';
+        }
 
         const stats = document.createElement('div');
         stats.setAttribute("class", "statsContainer")

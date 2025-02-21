@@ -4,7 +4,7 @@ export const favoritos = () => {
   const cards = document.getElementById('cards-container');
   const generalContainerFav = document.createElement('div'); 
   generalContainerFav.setAttribute('id', "favView")
-  const local= JSON.parse(localStorage.getItem('favoritos'));
+  let local = JSON.parse(localStorage.getItem('favoritos'));
   cards.appendChild(generalContainerFav);
 
   const paginacion = document.getElementById('pagination__container');
@@ -61,15 +61,32 @@ export const favoritos = () => {
           score.textContent = element.stat.name
           stats.appendChild(attackContainer)
       })
+
+      const delte = document.createElement('img');
+        delte.src = "https://cdn-icons-png.flaticon.com/512/860/860829.png"
+        delte.setAttribute('class', 'delete')
+
       secondaryCardContainer.appendChild(image);
         secondaryCardContainer.appendChild(name);
        secondaryCardContainer.appendChild(types);
         secondaryCardContainer.appendChild(stats);
+        secondaryCardContainer.appendChild(delte);
         cardContainer.appendChild(containerHpNum);
         cardContainer.appendChild(secondaryCardContainer);
+
+        
+        delte.addEventListener('click', function(){
+          const itemIdToRemove = item.id; 
+          local = local.filter(item => item.id !== itemIdToRemove);
+          if (!local.some(item => item.id === itemIdToRemove)) {
+            lista.style.display = 'none';
+        }
+        })
        
         lista.appendChild(cardContainer);
+        
     })
+
 
     generalContainerFav.appendChild(lista);
   cards.appendChild(generalContainerFav);
