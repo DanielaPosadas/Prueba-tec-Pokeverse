@@ -70,10 +70,10 @@ export const favoritos = () => {
           const itemIdToRemove = item.id; 
           local = local.filter(item => item.id !== itemIdToRemove);
           if (!local.some(item => item.id === itemIdToRemove)) {
-            lista.style.display = 'none';
+            cardContainer.style.display = 'none';
         }
         })
-        
+
       secondaryCardContainer.appendChild(image);
         secondaryCardContainer.appendChild(name);
        secondaryCardContainer.appendChild(types);
