@@ -66,15 +66,6 @@ export const favoritos = () => {
         delte.src = "https://cdn-icons-png.flaticon.com/512/860/860829.png"
         delte.setAttribute('class', 'delete')
 
-      secondaryCardContainer.appendChild(image);
-        secondaryCardContainer.appendChild(name);
-       secondaryCardContainer.appendChild(types);
-        secondaryCardContainer.appendChild(stats);
-        secondaryCardContainer.appendChild(delte);
-        cardContainer.appendChild(containerHpNum);
-        cardContainer.appendChild(secondaryCardContainer);
-
-        
         delte.addEventListener('click', function(){
           const itemIdToRemove = item.id; 
           local = local.filter(item => item.id !== itemIdToRemove);
@@ -82,6 +73,14 @@ export const favoritos = () => {
             lista.style.display = 'none';
         }
         })
+        
+      secondaryCardContainer.appendChild(image);
+        secondaryCardContainer.appendChild(name);
+       secondaryCardContainer.appendChild(types);
+        secondaryCardContainer.appendChild(stats);
+        secondaryCardContainer.appendChild(delte);
+        cardContainer.appendChild(containerHpNum);
+        cardContainer.appendChild(secondaryCardContainer);
        
         lista.appendChild(cardContainer);
         
