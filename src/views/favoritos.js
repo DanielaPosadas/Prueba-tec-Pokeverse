@@ -66,6 +66,14 @@ export const favoritos = () => {
         delte.src = "https://cdn-icons-png.flaticon.com/512/860/860829.png"
         delte.setAttribute('class', 'delete')
 
+        delte.addEventListener('click', function(){
+          const itemIdToRemove = item.id; 
+          local = local.filter(item => item.id !== itemIdToRemove);
+          if (!local.some(item => item.id === itemIdToRemove)) {
+            cardContainer.style.display = 'none';
+        }
+        })
+
       secondaryCardContainer.appendChild(image);
         secondaryCardContainer.appendChild(name);
        secondaryCardContainer.appendChild(types);
@@ -73,15 +81,6 @@ export const favoritos = () => {
         secondaryCardContainer.appendChild(delte);
         cardContainer.appendChild(containerHpNum);
         cardContainer.appendChild(secondaryCardContainer);
-
-        
-        delte.addEventListener('click', function(){
-          const itemIdToRemove = item.id; 
-          local = local.filter(item => item.id !== itemIdToRemove);
-          if (!local.some(item => item.id === itemIdToRemove)) {
-            lista.style.display = 'none';
-        }
-        })
        
         lista.appendChild(cardContainer);
         
