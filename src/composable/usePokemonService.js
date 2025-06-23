@@ -1,8 +1,8 @@
 
-export const card = async (offset, limit) => {
-    let resp = {};
+export const card = async (start, limit) => {
+    let resp = {};      
     try {
-        resp = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`)
+        resp = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${start}&limit=${limit}`)
     } catch (error){
         console.error("AQUÍ EL ERROR", error)
     }
@@ -12,6 +12,7 @@ export const card = async (offset, limit) => {
     const resultado = urls.map(async (urls) => {
         try {
             const respuesta = await axios.get(urls)
+            console.log("Respuesta", respuesta)
             return respuesta
         } catch (error){
             console.error("AQUÍ EL ERROR", error)
@@ -22,7 +23,7 @@ export const card = async (offset, limit) => {
 
     try{
         resultadosFinales = await Promise.all(resultado)
-        console.log("Esta es la respuesta")
+        console.log("Esta es la respuesta", resultadosFinales)
     } catch (error) {
         console.log("no salio bien")
     }
@@ -31,3 +32,6 @@ export const card = async (offset, limit) => {
     
     return finalArray
 }
+
+export default card
+

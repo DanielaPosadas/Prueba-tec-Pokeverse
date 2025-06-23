@@ -1,9 +1,8 @@
-import { card } from "../composable/usePokemonService.js";
+import card from "../composable/usePokemonService.js";
 
-export const IndividualCard = async (offset, limit) => {
+export const IndividualCard = async (start, limit) => {
 
-    const resultados = await card(offset, limit);
-
+    const resultados = await card(start, limit);
 
     const lista = document.createElement('ul');
     
@@ -35,21 +34,66 @@ export const IndividualCard = async (offset, limit) => {
         
         const types = document.createElement('p');
         types.setAttribute('class', 'types')
-        types.textContent = item.types.map(resp => resp.type.name).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('/');
-        if(types.textContent === "Fire"){
-            types.style.backgroundColor = '#ff0000';
-        } else if(types.textContent === "Grass/Poison" || types.textContent === "Poison" ){
-            types.style.backgroundColor = '#008000';
-        }else if(types.textContent === "Water"){
-            types.style.backgroundColor = '#149ded';
-        } else if(types.textContent === "Bug" || types.textContent === "Bug/Poison"){
-            types.style.backgroundColor = '#09b816';
-        }else if(types.textContent === "Ground"){
-            types.style.backgroundColor = '#a97a19e0';
-        }else if(types.textContent === "Electric"){
-            types.style.backgroundColor = '#ffdd50';
-        }else if(types.textContent === "Fairy" || types.textContent === "Normal/Fairy"){
-            types.style.backgroundColor = '#ff50e2e6';
+        
+        const typesText = item.types.map(resp => resp.type.name).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('/');
+
+        types.textContent = typesText;
+        console.log("typesText", typesText)
+
+        const typeColor = {
+            'fire': '#ff0000',
+            'grass': '#008000',
+            'water': '#149ded',
+            'bug': '#09b816',
+            'ground': '#a97a19e0',
+            'electric': '#ffdd50',
+            'fairy': '#ff50e2e6',
+            'normal': '#a97a19e0',
+            'poison': '#a97a19e0',
+            'ghost': '#a97a19e0',
+            'flying': '#a97a19e0',
+            'fighting': '#a97a19e0',
+            'psychic': '#a97a19e0',
+            'steel': '#a97a19e0',
+            'dragon': '#a97a19e0',
+            'ice': '#a97a19e0',
+            'dark': '#a97a19e0',
+            'rock': '#a97a19e0',
+            'steel': '#a97a19e0',
+            'dragon': '#a97a19e0',
+        }
+
+        const typesColors = Object.keys(typeColor);
+        const allCombinations = {};
+
+// Tipos individuales
+typesColors.forEach(type => {
+  allCombinations[type.charAt(0).toUpperCase() + type.slice(1)] = typeColor[type];
+  console.log("allCombinations", allCombinations)
+});
+
+// Combinaciones dobles
+for (let i = 0; i < typesColors.length; i++) {
+    for (let j = 0; j < typesColors.length; j++) {
+      if (i !== j) {
+        const pair = [typesColors[i], typesColors[j]] && [typesColors[j], typesColors[i]];
+        const key = pair.map(capitalize).join('/');
+        console.log("pair", pair)
+        console.log("key", key)
+        if (!allCombinations[key]) {
+          allCombinations[key] = typeColor[pair[0]];
+          console.log("allCombinations", allCombinations)
+        }
+      }
+    }
+}
+function capitalize(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+console.log(allCombinations);
+        
+        if(allCombinations[typesText]){
+            types.style.backgroundColor = allCombinations[typesText];
         }
 
         const stats = document.createElement('div');
@@ -57,15 +101,25 @@ export const IndividualCard = async (offset, limit) => {
         const boxes = item.stats.map(item => item).slice(1, 4);
         boxes.map(element => {
             const attackContainer = document.createElement('div');
-            attackContainer.setAttribute("class",'attackContainer')
-            const attack = document.createElement('p');
-            attack.setAttribute('class', 'attack');
-            attackContainer.appendChild(attack);
-            attack.textContent = element.base_stat;
+            attackContainer.setAttribute("class", "container")
             const score = document.createElement('p');
             score.setAttribute('class', 'score');
             attackContainer.appendChild(score);
             score.textContent = element.stat.name
+            const attack = document.createElement('progress');
+            attackContainer.appendChild(attack);
+            attack.setAttribute('value', element.base_stat);
+            attack.setAttribute('max', 100);
+
+            if(element.stat.name === "special-attack"){
+                attack.setAttribute("class", "special-attack")
+            } else if(element.stat.name === "special-defense"){
+                attack.setAttribute("class", "special-defense")
+            } else if(element.stat.name === "attack"){
+                attack.setAttribute("class", "attack")
+            } else if(element.stat.name === "defense"){
+                attack.setAttribute("class", "defense")
+            }
             stats.appendChild(attackContainer)
         })
 
@@ -92,6 +146,7 @@ export const IndividualCard = async (offset, limit) => {
         })
 
         lista.appendChild(cardContainer);
+        console.log("RESULTADO EN CARD", cardContainer)
     });
 
     return lista

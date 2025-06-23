@@ -100,26 +100,6 @@ export const nav = () => {
     desktopContainer.appendChild(imgFavorites);
     div_nav.appendChild(desktopContainer);
 
-    imgFavorites.addEventListener('click', function(){
-        navigateTo('/favoritos');
-    })
-
-    inicio.addEventListener('click', function(){
-        navigateTo('/');
-    })
-
-    favorites.addEventListener('click' ,function(){
-    navigateTo('/favoritos')
-    })
-    home.addEventListener('click' ,function(){
-        navigateTo('/')
-        })
-    api.addEventListener('click' ,function(){
-        window.open('https://pokeapi.co/', '_blank');
-    })
-    pokeapi.addEventListener('click' ,function(){
-        window.open('https://pokeapi.co/', '_blank');
-    })
 
     return div_nav 
 }

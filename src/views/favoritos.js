@@ -7,9 +7,6 @@ export const favoritos = () => {
   let local = JSON.parse(localStorage.getItem('favoritos'));
   cards.appendChild(generalContainerFav);
 
-  const paginacion = document.getElementById('pagination__container');
-  paginacion.style.display= 'none'
-
   const noLocal = document.createElement('p');
   noLocal.textContent = "No tienes favoritos aún";
 
