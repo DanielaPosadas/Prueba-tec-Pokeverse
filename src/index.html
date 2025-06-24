@@ -1,42 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Pokeverse</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./output.css" rel="stylesheet">
-    <link href="./style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=VT323&display=swap" rel="stylesheet">
-    <link rel="icon" href="/favicon.png" type="image/png">
-  </head>
-  <body class="relative">
-    
-    <header class="flex w-full fixed top-0 z-50 bg-white">
-      <nav class="flex justify-between w-full">
-        <div class="">
-        <h1 class="title">POKEVERSE</h1>
-      </div>
-      <div class="flex items-center gap-5">
-        <p>Inicio</p>
-        <p>API</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077086.png" class="size-8" alt="">
-      </div>
-      </nav>
-    </header>
+   <head>
+      <meta charset="utf-8" />
+      <title>Pokeverse</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href="./output.css" rel="stylesheet" />
+      <link href="./style.css" rel="stylesheet" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=VT323&display=swap" rel="stylesheet" />
+      <link rel="icon" href="/favicon.png" type="image/png" />
+   </head>
+   <body class="relative">
+      <header class="flex w-full fixed top-0 z-50 backdrop-blur-xl bg-white bg-opacity-50">
+         <nav class="flex justify-between w-full">
+            <div class="">
+               <h1 class="title">POKEVERSE</h1>
+            </div>
+            <div class="flex items-center gap-5">
+               <div class="flex items-center gap-5 relative">
+                  <input id="search" type="text" placeholder="Buscar" class="pl-2 rounded-full" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/1077/1077086.png" class="size-4 absolute top-1/2 -translate-y-1/2 right-2" alt="" />
+               </div>
+               <p>API</p>
+               <img src="https://cdn-icons-png.flaticon.com/512/1077/1077086.png" class="size-8" alt="" />
+               <img src="https://cdn-icons-png.flaticon.com/512/1077/1077086.png" class="size-8" alt="" />
+            </div>
+         </nav>
+      </header>
 
-    <section class="flex justify-center w-full min-h-screen h-max items-center z-10 bg-black">
-      <div class="flex justify-center items-center h-full">
-        <div class="loader"></div>
-        <div class="cards-container mt-20"></div>
-      </div>
-    </section>
+      <section class="flex justify-center w-full min-h-screen h-max items-center z-10 bg-black">
+         <div class="flex justify-center items-center h-full">
+            <div class="loader"></div>
+            <div class="cards-container mt-20"></div>
+            <div class="modalContainer"></div>
+         </div>
+      </section>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
-      type="module"
-    ></script>
-    <script src="./main.js" type="module"></script>
-  </body>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" type="module"></script>
+      <script src="./main.js" type="module"></script>
+   </body>
 </html>

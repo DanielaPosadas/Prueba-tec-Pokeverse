@@ -1,37 +1,34 @@
-
 export const card = async (start, limit) => {
-    let resp = {};      
-    try {
-        resp = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${start}&limit=${limit}`)
-    } catch (error){
-        console.error("AQUÍ EL ERROR", error)
-    }
+   let resp = {};
 
-    let urls = resp.data.results.map(items => items.url);
+   try {
+      resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${start}&limit=${limit}`);
+   } catch (error) {
+      console.error('AQUÍ EL ERROR', error);
+   }
 
-    const resultado = urls.map(async (urls) => {
-        try {
-            const respuesta = await axios.get(urls)
-            console.log("Respuesta", respuesta)
-            return respuesta
-        } catch (error){
-            console.error("AQUÍ EL ERROR", error)
-        }
-    });
+   let urls = resp.data.results.map(items => items.url);
 
-    let resultadosFinales;
+   const resultado = urls.map(async urls => {
+      try {
+         const respuesta = await axios.get(urls);
+         return respuesta;
+      } catch (error) {
+         console.error('AQUÍ EL ERROR', error);
+      }
+   });
 
-    try{
-        resultadosFinales = await Promise.all(resultado)
-        console.log("Esta es la respuesta", resultadosFinales)
-    } catch (error) {
-        console.log("no salio bien")
-    }
+   let resultadosFinales;
 
-    const finalArray = resultadosFinales.map(item => item.data)
-    
-    return finalArray
-}
+   try {
+      resultadosFinales = await Promise.all(resultado);
+   } catch (error) {
+      console.log('Algo no salio bien');
+   }
 
-export default card
+   const finalArray = resultadosFinales.map(item => item.data);
 
+   return finalArray;
+};
+
+export default card;
